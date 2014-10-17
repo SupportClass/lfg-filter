@@ -1,0 +1,33 @@
+
+<div id="eol-wordfilter" class="panel panel-default panel-span-2">
+  <div class="panel-heading">
+    <h3 class="panel-title">Word Filter</h3><i class="fa fa-filter"></i>
+  </div>
+  <div class="panel-body">
+    <div class="btn-group btn-group-justified">
+      <div class="btn-group">
+        <button data-toggle="modal" data-target="#eol-wordfilter_modal" class="btn btn-primary btn-xs">Manage word filter</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="eol-wordfilter_modal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" data-dismiss="modal" class="close"><span aria-hidden="true">&#215;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Word Filter</h4>
+      </div>
+      <div class="modal-body">
+        <div class="ncg-label">ADD/DELETE WORDS, SEPARATE WITH COMMA</div>
+        <select multiple="multiple" class="blacklist"></select>
+      </div>
+      <div class="modal-footer">
+        <button type="button" data-dismiss="modal" class="btn btn-default btn-xs">Done</button>
+      </div>
+    </div>
+    <!-- /.modal-content-->
+  </div>
+  <!-- /.modal-dialog-->
+</div>
+<!-- /.modal-->

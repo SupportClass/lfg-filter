@@ -1,0 +1,25 @@
+#eol-wordfilter.panel.panel-default.panel-span-2
+    .panel-heading
+        h3.panel-title Word Filter
+        i.fa.fa-filter
+    .panel-body
+        .btn-group.btn-group-justified
+            .btn-group
+                button.btn.btn-primary.btn-xs(data-toggle="modal" data-target="#eol-wordfilter_modal") Manage word filter
+
+#eol-wordfilter_modal.modal.fade
+    .modal-dialog
+        .modal-content
+            .modal-header
+                button.close(type="button", data-dismiss="modal")
+                    span(aria-hidden="true") &#215;
+                    span.sr-only Close
+                h4.modal-title Word Filter
+            .modal-body
+                .ncg-label ADD/DELETE WORDS, SEPARATE WITH COMMA
+                select.blacklist(multiple)
+            .modal-footer
+                button.btn.btn-default.btn-xs(type="button", data-dismiss="modal") Done
+        // /.modal-content
+    // /.modal-dialog
+// /.modal
