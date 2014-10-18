@@ -1,8 +1,13 @@
 #eol-wordfilter.panel.panel-default.panel-span-2
     .panel-heading
         h3.panel-title Word Filter
-        i.fa.fa-filter
+        i.fa.fa-filter.panel-icon
     .panel-body
+        p.bg-info(style="padding: 4px 8px; font-size: 80%;")
+            | Profanity filter for subscription and donation notifications.
+            br
+            br
+            | Anything caught by the filter will be shown on the dashboard for you to accept/reject.
         .btn-group.btn-group-justified
             .btn-group
                 button.btn.btn-primary.btn-xs(data-toggle="modal" data-target="#eol-wordfilter_modal") Manage word filter
