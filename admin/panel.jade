@@ -1,6 +1,6 @@
-#eol-wordfilter.panel.panel-default.panel-span-2
+#eol-filter.panel.panel-default.panel-span-2
     .panel-heading
-        h3.panel-title Word Filter
+        h3.panel-title Filter
         i.fa.fa-filter.panel-icon
     .panel-body
         p.bg-info(style="padding: 4px 8px; font-size: 80%;")
@@ -10,9 +10,12 @@
             | Anything caught by the filter will be shown on the dashboard for you to accept/reject.
         .btn-group.btn-group-justified
             .btn-group
-                button.btn.btn-primary.btn-xs(data-toggle="modal" data-target="#eol-wordfilter_modal") Manage word filter
+                button.btn.btn-primary.btn-xs(data-toggle="modal" data-target="#eol-filter_word") Manage word filter
+        .btn-group.btn-group-justified(style="margin-top: 4px;")
+            .btn-group
+                button.btn.btn-primary.btn-xs(data-toggle="modal" data-target="#eol-filter_address") Manage email filter
 
-#eol-wordfilter_modal.modal.fade
+#eol-filter_word.modal.fade
     .modal-dialog
         .modal-content
             .modal-header
@@ -22,6 +25,23 @@
                 h4.modal-title Word Filter
             .modal-body
                 .ncg-label ADD/DELETE WORDS, SEPARATE WITH COMMA
+                select.blacklist(multiple)
+            .modal-footer
+                button.btn.btn-default.btn-xs(type="button", data-dismiss="modal") Done
+        // /.modal-content
+    // /.modal-dialog
+// /.modal
+
+#eol-filter_address.modal.fade
+    .modal-dialog
+        .modal-content
+            .modal-header
+                button.close(type="button", data-dismiss="modal")
+                    span(aria-hidden="true") &#215;
+                    span.sr-only Close
+                h4.modal-title Address Filter
+            .modal-body
+                .ncg-label ADD/DELETE ADDRESSES, SEPARATE WITH COMMA
                 select.blacklist(multiple)
             .modal-footer
                 button.btn.btn-default.btn-xs(type="button", data-dismiss="modal") Done
