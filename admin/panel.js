@@ -30,16 +30,8 @@ $(document).ready(function () {
         if (dontUpdateWordBl)
             return;
 
-        // event.item: contains the item
-        // event.cancel: set to true to prevent the item getting added
-        var msg = {
-            bundleName: 'eol-filter',
-            messageName: 'addWords',
-            content: [event.item] //backend expects an array
-        };
-
         // Currently has to use direct socket.io calls as the NodeCG API doesn't support acknowledgements
-        nodecg._socket.emit('message', msg, function (numAdded) {
+        nodecg.sendMessage('addWords', [event.item], function (numAdded) {
             if (numAdded) {
                 updateWordList();
             } else {
@@ -53,16 +45,8 @@ $(document).ready(function () {
         if (dontUpdateAddressBl)
             return;
 
-        // event.item: contains the item
-        // event.cancel: set to true to prevent the item getting added
-        var msg = {
-            bundleName: 'eol-filter',
-            messageName: 'addAddresses',
-            content: [event.item] //backend expects an array
-        };
-
         // Currently has to use direct socket.io calls as the NodeCG API doesn't support acknowledgements
-        nodecg._socket.emit('message', msg, function (numAdded) {
+        nodecg.sendMessage('addAddresses', [event.item], function (numAdded) {
             if (numAdded) {
                 updateAddressList();
             } else {
@@ -73,16 +57,8 @@ $(document).ready(function () {
     });
 
     wordBl.on('beforeItemRemove', function(event) {
-        // event.item: contains the item
-        // event.cancel: set to true to prevent the item getting added
-        var msg = {
-            bundleName: 'eol-filter',
-            messageName: 'removeWords',
-            content: [event.item] //backend expects an array
-        };
-
         // Currently has to use direct socket.io calls as the NodeCG API doesn't support acknowledgements
-        nodecg._socket.emit('message', msg, function (numRemoved) {
+        nodecg.sendMessage('removeWords', [event.item], function (numRemoved) {
             if (numRemoved) {
                 updateWordList();
             } else {
@@ -92,16 +68,8 @@ $(document).ready(function () {
         });
     });
     addressBl.on('beforeItemRemove', function(event) {
-        // event.item: contains the item
-        // event.cancel: set to true to prevent the item getting added
-        var msg = {
-            bundleName: 'eol-filter',
-            messageName: 'removeAddresses',
-            content: [event.item] //backend expects an array
-        };
-
         // Currently has to use direct socket.io calls as the NodeCG API doesn't support acknowledgements
-        nodecg._socket.emit('message', msg, function (numRemoved) {
+        nodecg.sendMessage('removeAddresses', [event.item], function (numRemoved) {
             if (numRemoved) {
                 updateAddressList();
             } else {
@@ -112,13 +80,8 @@ $(document).ready(function () {
     });
 
     function updateWordList() {
-        var msg = {
-            bundleName: 'eol-filter',
-            messageName: 'getWordBlacklist'
-        };
-
         // Currently has to use direct socket.io calls as the NodeCG API doesn't support acknowledgements
-        nodecg._socket.emit('message', msg, function (blacklist) {
+        nodecg.sendMessage('getWordBlacklist', {}, function (blacklist) {
             if (blacklist) {
                 dontUpdateWordBl = true;
 
@@ -136,13 +99,8 @@ $(document).ready(function () {
     }
 
     function updateAddressList() {
-        var msg = {
-            bundleName: 'eol-filter',
-            messageName: 'getAddressBlacklist'
-        };
-
         // Currently has to use direct socket.io calls as the NodeCG API doesn't support acknowledgements
-        nodecg._socket.emit('message', msg, function (blacklist) {
+        nodecg.sendMessage('getAddressBlacklist', {}, function (blacklist) {
             if (blacklist) {
                 dontUpdateAddressBl = true;
 
