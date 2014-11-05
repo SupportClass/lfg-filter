@@ -1,11 +1,15 @@
 {
     "name": "eol-filter",
     "version": "0.0.1",
-    "nodecgDependency": "~0.0.1",
+    "nodecgDependency": "^0.1.0",
     "homepage": "http://alexvan.camp/",
     "authors": [
         "Alex Van Camp <email@alexvan.camp>"
     ],
     "description": "Provides a singleton 'wordfilter' object that other bundles can use to check if a string is profane. Includes a panel for management of the blacklist.",
-    "license": "Commercial"
+    "license": "Commercial",
+    "extension": {
+        "express": false,
+        "path": "index.js"
+    }
 }

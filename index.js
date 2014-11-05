@@ -1,5 +1,3 @@
-var express = require('express');
-var app = module.exports = express();
 var wordfilter = require('./lib/wordfilter');
 var emailfilter = require('./lib/emailfilter');
 var io = require('../../server.js');
