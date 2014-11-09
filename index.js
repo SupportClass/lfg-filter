@@ -1,3 +1,5 @@
+'use strict';
+
 var wordfilter = require('./lib/wordfilter');
 var emailfilter = require('./lib/emailfilter');
 var io = require('../../server.js');
