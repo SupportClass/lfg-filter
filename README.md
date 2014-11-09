@@ -9,8 +9,9 @@ It also has a dashboard panel that allows the end user to add and remove phrases
 - Run NodeCG, open your dashboard, and use the Filter panel to edit the blacklists
 
 ## Usage
-Add the following to your bundles' `index.js`
+Add the following to your bundle's extension:
 ```
+#!javascript
 var wordfilter = require('../eol-wordfilter').wordfilter;
 var emailfilter = require('../eol-wordfilter').emailfilter;
 
