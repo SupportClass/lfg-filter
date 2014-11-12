@@ -1,58 +1,59 @@
 'use strict';
 
-var wordfilter = require('./lib/wordfilter');
-var emailfilter = require('./lib/emailfilter');
-var io = require('../../server.js');
+var nodecg = {};
 
-io.sockets.on('connection', function (socket) {
-    socket.on('message', function (data, fn) {
-        if (data.bundleName !== 'eol-filter') {
-            return;
-        }
+function Filter(extensionApi) {
+    if (Filter.prototype._singletonInstance) {
+        return Filter.prototype._singletonInstance;
+    }
+    Filter.prototype._singletonInstance = this;
 
-        if (data.messageName === 'getWordBlacklist') {
-            wordfilter.getList()
-                .then(function (blacklist) {
-                    fn(blacklist);
-                });
-        }
+    nodecg = extensionApi;
 
-        if (data.messageName === 'addWords') {
-            wordfilter.addWords(data.content)
-                .then(function (numAdded) {
-                    fn(numAdded);
-                });
-        }
-
-        if (data.messageName === 'removeWords') {
-            wordfilter.removeWords(data.content)
-                .then(function (numRemoved) {
-                    fn(numRemoved);
-                });
-        }
-
-        if (data.messageName === 'getAddressBlacklist') {
-            emailfilter.getList()
-                .then(function (blacklist) {
-                    fn(blacklist);
-                });
-        }
-
-        if (data.messageName === 'addAddresses') {
-            emailfilter.addAddresses(data.content)
-                .then(function (numAdded) {
-                    fn(numAdded);
-                });
-        }
-
-        if (data.messageName === 'removeAddresses') {
-            emailfilter.removeAddresses(data.content)
-                .then(function (numRemoved) {
-                    fn(numRemoved);
-                });
-        }
+    nodecg.listenFor('getWordBlacklist', function getWordBlacklist(data, cb) {
+        wordfilter.getList()
+            .then(function (blacklist) {
+                cb(blacklist);
+            });
     });
-});
 
-module.exports.wordfilter = wordfilter;
-module.exports.emailfilter = emailfilter;
+    nodecg.listenFor('addWords', function addWords(data, cb) {
+        wordfilter.addWords(data.content)
+            .then(function (numAdded) {
+                cb(numAdded);
+            });
+    });
+
+    nodecg.listenFor('removeWords', function removeWords(data, cb) {
+        wordfilter.removeWords(data.content)
+            .then(function (numRemoved) {
+                cb(numRemoved);
+            });
+    });
+
+    nodecg.listenFor('getAddressBlacklist', function getAddressBlacklist(data, cb) {
+        emailfilter.getList()
+            .then(function (blacklist) {
+                cb(blacklist);
+            });
+    });
+
+    nodecg.listenFor('addAddresses', function addAddresses(data, cb) {
+        emailfilter.addAddresses(data.content)
+            .then(function (numAdded) {
+                cb(numAdded);
+            });
+    });
+
+    nodecg.listenFor('removeAddresses', function removeAddresses(data, cb) {
+        emailfilter.removeAddresses(data.content)
+            .then(function (numRemoved) {
+                cb(numRemoved);
+            });
+    });
+}
+
+Filter.wordfilter = require('./lib/wordfilter');
+Filter.emailfilter = require('./lib/emailfilter');
+
+module.exports = function(extensionApi) { new Filter(extensionApi) };
