@@ -51,7 +51,6 @@ Wordfilter.prototype.init = function() {
 };
 
 Wordfilter.prototype.write = function(words) {
-    console.log('writin wordbl', words);
     db.update({ _id: ID }, { words: words }, { upsert: true }, function (err, numAdded) {
         if (err)
             log.error(err.stack);

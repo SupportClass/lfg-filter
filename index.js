@@ -13,4 +13,4 @@ function Filter(extensionApi) {
     this.emailfilter = require('./extension/emailfilter')(nodecg);
 }
 
-module.exports = function(extensionApi) { new Filter(extensionApi) };
+module.exports = function(extensionApi) { return new Filter(extensionApi) };
