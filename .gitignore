@@ -1,2 +1,2 @@
 # Datastores
-/lib/*.db
+/bundles/eol-filter/backend/*.db
