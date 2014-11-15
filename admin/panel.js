@@ -5,20 +5,27 @@ $(document).ready(function () {
     var wordBl = wordModal.find('.blacklist');
     var addressBl = addressModal.find('.blacklist');
 
-    nodecg.declareSyncedVar('wordBlacklist', [], function emailBlacklist(newVal) {
-        wordBl.tagsinput('removeAll');
+    nodecg.declareSyncedVar({ variableName: 'wordBlacklist',
+        initialVal: [],
+        setter: function(newVal) {
+            wordBl.tagsinput('removeAll');
 
-        var len = newVal.length;
-        for (var i = 0; i < len; i++) {
-            wordBl.tagsinput('add', newVal[i]);
+            var len = newVal.length;
+            for (var i = 0; i < len; i++) {
+                wordBl.tagsinput('add', newVal[i]);
+            }
         }
     });
-    nodecg.declareSyncedVar('emailBlacklist', [], function emailBlacklist(newVal) {
-        addressBl.tagsinput('removeAll');
 
-        var len = newVal.length;
-        for (var i = 0; i < len; i++) {
-            addressBl.tagsinput('add', newVal[i]);
+    nodecg.declareSyncedVar({ variableName: 'emailBlacklist',
+        initialVal: [],
+        setter: function(newVal) {
+            addressBl.tagsinput('removeAll');
+
+            var len = newVal.length;
+            for (var i = 0; i < len; i++) {
+                addressBl.tagsinput('add', newVal[i]);
+            }
         }
     });
 

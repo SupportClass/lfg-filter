@@ -17,8 +17,11 @@ function Wordfilter(extensionApi) {
 
     this.init()
         .then(function(blacklist) {
-            nodecg.declareSyncedVar('wordBlacklist', blacklist.words, function(newVal) {
-                self.write(newVal);
+            nodecg.declareSyncedVar({ variableName: 'wordBlacklist',
+                initialVal: blacklist.words,
+                setter: function(newVal) {
+                    self.write(newVal);
+                }
             });
         })
         .fail(function(err) {

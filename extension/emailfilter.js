@@ -17,8 +17,11 @@ function Emailfilter(extensionApi) {
 
     this.init()
         .then(function(blacklist) {
-            nodecg.declareSyncedVar('emailBlacklist', blacklist.addresses, function(newVal) {
-                self.write(newVal);
+            nodecg.declareSyncedVar({ variableName: 'emailBlacklist',
+                initialVal: blacklist.addresses,
+                setter: function(newVal) {
+                    self.write(newVal);
+                }
             });
         })
         .fail(function(err) {
