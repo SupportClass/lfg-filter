@@ -4,8 +4,30 @@ $(document).ready(function () {
     var addressModal = $('#eol-filter_address');
     var wordBl = wordModal.find('.blacklist');
     var addressBl = addressModal.find('.blacklist');
-    var dontUpdateWordBl = true;
-    var dontUpdateAddressBl = true;
+
+    nodecg.declareSyncedVar({ variableName: 'wordBlacklist',
+        initialVal: [],
+        setter: function(newVal) {
+            wordBl.tagsinput('removeAll');
+
+            var len = newVal.length;
+            for (var i = 0; i < len; i++) {
+                wordBl.tagsinput('add', newVal[i]);
+            }
+        }
+    });
+
+    nodecg.declareSyncedVar({ variableName: 'emailBlacklist',
+        initialVal: [],
+        setter: function(newVal) {
+            addressBl.tagsinput('removeAll');
+
+            var len = newVal.length;
+            for (var i = 0; i < len; i++) {
+                addressBl.tagsinput('add', newVal[i]);
+            }
+        }
+    });
 
     wordBl.tagsinput({
         trimValue: true
@@ -16,106 +38,37 @@ $(document).ready(function () {
 
     //triggered when modal is about to be shown
     wordModal.on('show.bs.modal', function(e) {
-        updateWordList();
+        addressBl.val(nodecg.variables.wordBlacklist);
         wordBl.tagsinput('focus');
     });
-    //triggered when modal is about to be shown
     addressModal.on('show.bs.modal', function(e) {
-        updateAddressList();
+        addressBl.val(nodecg.variables.emailBlacklist);
         addressBl.tagsinput('focus');
     });
 
-    wordBl.on('beforeItemAdd', function(event) {
-        // Hack to prevent infinite loop when initial data is gotten from backend
-        if (dontUpdateWordBl)
-            return;
+    //triggered when modal is about to be hidden
+    wordModal.on('hide.bs.modal', function(e) {
+        var arr = wordBl.val();
+        if (!arr)
+            arr = [];
 
-        // Currently has to use direct socket.io calls as the NodeCG API doesn't support acknowledgements
-        nodecg.sendMessage('addWords', [event.item], function (numAdded) {
-            if (numAdded) {
-                updateWordList();
-            } else {
-                wordBl.tagsinput('remove', event.item);
-                console.error('[eol-filter] Failed to add word(s) to blacklist');
-            }
-        });
+        var len = arr.length;
+        for (var i = 0; i < len; i++) {
+            arr[i] = arr[i].toLowerCase();
+        }
+        nodecg.variables.wordBlacklist = arr;
     });
-    addressBl.on('beforeItemAdd', function(event) {
-        // Hack to prevent infinite loop when initial data is gotten from backend
-        if (dontUpdateAddressBl)
-            return;
+    addressModal.on('hide.bs.modal', function(e) {
+        var arr = addressBl.val();
+        if (!arr)
+            arr = [];
 
-        // Currently has to use direct socket.io calls as the NodeCG API doesn't support acknowledgements
-        nodecg.sendMessage('addAddresses', [event.item], function (numAdded) {
-            if (numAdded) {
-                updateAddressList();
-            } else {
-                wordBl.tagsinput('remove', event.item);
-                console.error('[eol-filter] Failed to add address(es) to blacklist');
-            }
-        });
+        var len = arr.length;
+        for (var i = 0; i < len; i++) {
+            arr[i] = arr[i].toLowerCase();
+        }
+
+        nodecg.variables.emailBlacklist = arr;
     });
-
-    wordBl.on('beforeItemRemove', function(event) {
-        // Currently has to use direct socket.io calls as the NodeCG API doesn't support acknowledgements
-        nodecg.sendMessage('removeWords', [event.item], function (numRemoved) {
-            if (numRemoved) {
-                updateWordList();
-            } else {
-                wordBl.tagsinput('add', event.item);
-                console.error('[eol-filter] Failed to remove word(s) from blacklist');
-            }
-        });
-    });
-    addressBl.on('beforeItemRemove', function(event) {
-        // Currently has to use direct socket.io calls as the NodeCG API doesn't support acknowledgements
-        nodecg.sendMessage('removeAddresses', [event.item], function (numRemoved) {
-            if (numRemoved) {
-                updateAddressList();
-            } else {
-                wordBl.tagsinput('add', event.item);
-                console.error('[eol-filter] Failed to remove address(es) from blacklist');
-            }
-        });
-    });
-
-    function updateWordList() {
-        // Currently has to use direct socket.io calls as the NodeCG API doesn't support acknowledgements
-        nodecg.sendMessage('getWordBlacklist', {}, function (blacklist) {
-            if (blacklist) {
-                dontUpdateWordBl = true;
-
-                wordBl.tagsinput('removeAll');
-
-                blacklist.forEach(function(word) {
-                    wordBl.tagsinput('add', word);
-                });
-
-                dontUpdateWordBl = false;
-            } else {
-                console.error('[eol-filter] Failed to retrieve word blacklist');
-            }
-        });
-    }
-
-    function updateAddressList() {
-        // Currently has to use direct socket.io calls as the NodeCG API doesn't support acknowledgements
-        nodecg.sendMessage('getAddressBlacklist', {}, function (blacklist) {
-            if (blacklist) {
-                dontUpdateAddressBl = true;
-
-                addressBl.tagsinput('removeAll');
-
-                blacklist.forEach(function(word) {
-                    addressBl.tagsinput('add', word);
-                });
-
-                dontUpdateAddressBl = false;
-            } else {
-                console.error('[eol-filter] Failed to retrieve address blacklist');
-            }
-        });
-    }
-
     
 });
