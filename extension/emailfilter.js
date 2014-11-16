@@ -69,4 +69,4 @@ Emailfilter.prototype.blacklisted = function (string) {
     return blacklist.indexOf(string.toLowerCase()) > -1;
 };
 
-module.exports = function(extensionApi) { new Emailfilter(extensionApi) };
+module.exports = function(extensionApi) { return new Emailfilter(extensionApi) };

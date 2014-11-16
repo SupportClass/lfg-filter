@@ -75,4 +75,4 @@ Wordfilter.prototype.blacklisted = function (string) {
     return false;
 };
 
-module.exports = function(extensionApi) { new Wordfilter(extensionApi) };
+module.exports = function(extensionApi) { return new Wordfilter(extensionApi) };
