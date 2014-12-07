@@ -1,0 +1,9 @@
+[
+  {
+    "name": "filter",
+    "title": "Filter",
+    "width": 2,
+    "file": "panel.jade",
+    "faIcon": "fa-filter"
+  }
+]
