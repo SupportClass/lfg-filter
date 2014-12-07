@@ -1,29 +1,31 @@
 #eol-filter
+This is a [NodeCG](http://github.com/nodecg/nodecg) bundle.
 
-This bundle provides `wordfilter` and `emailfilter` singletons that other bundles can use to check if a string contains profanity or if an email address is blacklisted.
-It also has a dashboard panel that allows the end user to add and remove phrases from the blacklists.
+This bundle provides `wordfilter` and `emailfilter` objects that other bundles can use to check if a string contains profanity or if an email address is blacklisted.
+It also has a dashboard panel that allows the end user to add and remove phrases from the blacklists. **By default, the blacklists are empty.**
 
 ## Installation
-
 - Install to `nodecg/bundles/eol-wordfilter`
 - Run NodeCG, open your dashboard, and use the Filter panel to edit the blacklists
 
 ## Usage
-Add the following to your bundle's extension:
+Add `eol-filter` as a `bundleDependency` in your bundle's [`nodecg.json`](https://github.com/nodecg/nodecg/wiki/nodecg.json)
+
+Then add the following to your bundle's extension:
 ```
 #!javascript
-var wordfilter = require('../eol-wordfilter').wordfilter;
-var emailfilter = require('../eol-wordfilter').emailfilter;
+var wordfilter = nodecg.extensions['eol-filter'].wordfilter;
+var emailfilter = nodecg.extensions['eol-filter'].emailfilter;
 
 // Returns 'true' if the string contains profanity
-if (wordfilter.blacklisted('this is a string') {
+if (wordfilter.blacklisted('this is a string')) {
     console.log('bad words found');
 } else {
     console.log('squeaky clean');
 }
 
 // Returns 'true' if the address is blacklisted
-if (emailfilter.blacklisted('test@example.com') {
+if (emailfilter.blacklisted('test@example.com')) {
     console.log('email blacklisted');
 } else {
     console.log('looks good to me, chief');
