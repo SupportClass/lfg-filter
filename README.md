@@ -12,8 +12,7 @@ It also has a dashboard panel that allows the end user to add and remove phrases
 Add `lfg-filter` as a `bundleDependency` in your bundle's [`nodecg.json`](https://github.com/nodecg/nodecg/wiki/nodecg.json)
 
 Then add the following to your bundle's extension:
-```
-#!javascript
+```javascript
 var wordfilter = nodecg.extensions['lfg-filter'].wordfilter;
 var emailfilter = nodecg.extensions['lfg-filter'].emailfilter;
 
