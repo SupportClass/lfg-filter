@@ -5,7 +5,7 @@ This bundle provides `wordfilter` and `emailfilter` objects that other bundles c
 It also has a dashboard panel that allows the end user to add and remove phrases from the blacklists. **By default, the blacklists are empty.**
 
 ## Installation
-- Install to `nodecg/bundles/eol-wordfilter`
+- Install to `nodecg/bundles/lfg-filter`
 - Run NodeCG, open your dashboard, and use the Filter panel to edit the blacklists
 
 ## Usage
