@@ -1,7 +1,7 @@
 'use strict';
 
-var wordModal = $('#eol-filter_word');
-var addressModal = $('#eol-filter_address');
+var wordModal = $('#lfg-filter_word');
+var addressModal = $('#lfg-filter_address');
 var wordBl = wordModal.find('.blacklist');
 var addressBl = addressModal.find('.blacklist');
 

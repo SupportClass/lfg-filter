@@ -1,4 +1,4 @@
-#eol-filter
+#lfg-filter
 This is a [NodeCG](http://github.com/nodecg/nodecg) bundle.
 
 This bundle provides `wordfilter` and `emailfilter` objects that other bundles can use to check if a string contains profanity or if an email address is blacklisted.
@@ -9,13 +9,13 @@ It also has a dashboard panel that allows the end user to add and remove phrases
 - Run NodeCG, open your dashboard, and use the Filter panel to edit the blacklists
 
 ## Usage
-Add `eol-filter` as a `bundleDependency` in your bundle's [`nodecg.json`](https://github.com/nodecg/nodecg/wiki/nodecg.json)
+Add `lfg-filter` as a `bundleDependency` in your bundle's [`nodecg.json`](https://github.com/nodecg/nodecg/wiki/nodecg.json)
 
 Then add the following to your bundle's extension:
 ```
 #!javascript
-var wordfilter = nodecg.extensions['eol-filter'].wordfilter;
-var emailfilter = nodecg.extensions['eol-filter'].emailfilter;
+var wordfilter = nodecg.extensions['lfg-filter'].wordfilter;
+var emailfilter = nodecg.extensions['lfg-filter'].emailfilter;
 
 // Returns 'true' if the string contains profanity
 if (wordfilter.blacklisted('this is a string')) {
