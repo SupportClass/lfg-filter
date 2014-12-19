@@ -30,3 +30,7 @@ if (emailfilter.blacklisted('test@example.com')) {
     console.log('looks good to me, chief');
 }
 ```
+
+### License
+lfg-filter is provided under the MIT license, which is available to read in the [LICENSE][] file.
+[license]: LICENSE
