@@ -1,8 +1,8 @@
 'use strict';
 
-function Filter(nodecg) {
-    this.wordfilter = require('./extension/wordfilter')(nodecg);
-    this.emailfilter = require('./extension/emailfilter')(nodecg);
-}
-
-module.exports = function(nodecg) { return new Filter(nodecg) };
+module.exports = function(nodecg) {
+    var filter = {};
+    filter.wordfilter = require('./extension/wordfilter')(nodecg);
+    filter.emailfilter = require('./extension/emailfilter')(nodecg);
+    return filter;
+};

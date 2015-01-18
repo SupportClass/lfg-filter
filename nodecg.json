@@ -1,15 +1,18 @@
 {
     "name": "lfg-filter",
     "version": "1.0.0",
-    "nodecgDependency": "~0.3.0",
+    "nodecgDependency": "~0.4.0",
     "homepage": "http://alexvan.camp/",
     "authors": [
         "Alex Van Camp <email@alexvan.camp>"
     ],
-    "description": "Provides a singleton 'wordfilter' object that other bundles can use to check if a string is profane. Includes a panel for management of the blacklist.",
+    "description": "Provides a 'wordfilter' object that other bundles can use to check if a string is profane. Includes a panel for management of the blacklist.",
     "license": "MIT",
     "extension": {
         "express": false,
         "path": "extension.js"
+    },
+    "dependencies": {
+        "nedb": "^1.1.1"
     }
 }
