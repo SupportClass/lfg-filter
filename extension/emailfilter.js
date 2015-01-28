@@ -54,9 +54,8 @@ Emailfilter.prototype.init = function() {
 };
 
 Emailfilter.prototype.write = function(addresses) {
-    db.update({ _id: ID }, { addresses: addresses }, { upsert: true }, function (err, numAdded) {
-        if (err)
-            log.error(err.stack);
+    db.update({ _id: ID }, { addresses: addresses }, { upsert: true }, function (err) {
+        if (err) nodecg.log.error(err.stack);
     });
 };
 
@@ -69,4 +68,4 @@ Emailfilter.prototype.blacklisted = function (string) {
     return blacklist.indexOf(string.toLowerCase()) > -1;
 };
 
-module.exports = function(extensionApi) { return new Emailfilter(extensionApi) };
+module.exports = function(extensionApi) { return new Emailfilter(extensionApi); };

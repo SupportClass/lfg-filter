@@ -54,9 +54,8 @@ Wordfilter.prototype.init = function() {
 };
 
 Wordfilter.prototype.write = function(words) {
-    db.update({ _id: ID }, { words: words }, { upsert: true }, function (err, numAdded) {
-        if (err)
-            log.error(err.stack);
+    db.update({ _id: ID }, { words: words }, { upsert: true }, function (err) {
+        if (err) nodecg.log.error(err.stack);
     });
 };
 
@@ -75,4 +74,4 @@ Wordfilter.prototype.blacklisted = function (string) {
     return false;
 };
 
-module.exports = function(extensionApi) { return new Wordfilter(extensionApi) };
+module.exports = function(extensionApi) { return new Wordfilter(extensionApi); };

@@ -37,17 +37,17 @@ addressBl.tagsinput({
 });
 
 //triggered when modal is about to be shown
-wordModal.on('show.bs.modal', function(e) {
+wordModal.on('show.bs.modal', function() {
     addressBl.val(nodecg.variables.wordBlacklist);
     wordBl.tagsinput('focus');
 });
-addressModal.on('show.bs.modal', function(e) {
+addressModal.on('show.bs.modal', function() {
     addressBl.val(nodecg.variables.emailBlacklist);
     addressBl.tagsinput('focus');
 });
 
 //triggered when modal is about to be hidden
-wordModal.on('hide.bs.modal', function(e) {
+wordModal.on('hide.bs.modal', function() {
     var arr = wordBl.val();
     if (!arr)
         arr = [];
@@ -58,7 +58,7 @@ wordModal.on('hide.bs.modal', function(e) {
     }
     nodecg.variables.wordBlacklist = arr;
 });
-addressModal.on('hide.bs.modal', function(e) {
+addressModal.on('hide.bs.modal', function() {
     var arr = addressBl.val();
     if (!arr)
         arr = [];
