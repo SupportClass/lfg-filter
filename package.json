@@ -1,4 +1,5 @@
 {
+  "name": "lfg-filter",
   "dependencies": {
     "nedb": "^1.1.1"
   }
