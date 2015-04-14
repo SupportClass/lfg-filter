@@ -6,7 +6,7 @@ var wordBl = wordModal.find('.blacklist');
 var addressBl = addressModal.find('.blacklist');
 
 var wordBlacklist = nodecg.Replicant('wordBlacklist');
-wordBlacklist.on('change', function(newVal) {
+wordBlacklist.on('change', function(oldVal, newVal) {
     wordBl.tagsinput('removeAll');
 
     var len = newVal.length;
@@ -16,7 +16,7 @@ wordBlacklist.on('change', function(newVal) {
 });
 
 var emailBlacklist = nodecg.Replicant('emailBlacklist');
-emailBlacklist.on('change', function(newVal) {
+emailBlacklist.on('change', function(oldVal, newVal) {
     addressBl.tagsinput('removeAll');
 
     var len = newVal.length;
