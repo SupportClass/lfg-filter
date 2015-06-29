@@ -5,27 +5,23 @@ var addressModal = $('#lfg-filter_address');
 var wordBl = wordModal.find('.blacklist');
 var addressBl = addressModal.find('.blacklist');
 
-nodecg.declareSyncedVar({ variableName: 'wordBlacklist',
-    initialVal: [],
-    setter: function(newVal) {
-        wordBl.tagsinput('removeAll');
+var wordBlacklist = nodecg.Replicant('wordBlacklist');
+wordBlacklist.on('change', function(oldVal, newVal) {
+    wordBl.tagsinput('removeAll');
 
-        var len = newVal.length;
-        for (var i = 0; i < len; i++) {
-            wordBl.tagsinput('add', newVal[i]);
-        }
+    var len = newVal.length;
+    for (var i = 0; i < len; i++) {
+        wordBl.tagsinput('add', newVal[i]);
     }
 });
 
-nodecg.declareSyncedVar({ variableName: 'emailBlacklist',
-    initialVal: [],
-    setter: function(newVal) {
-        addressBl.tagsinput('removeAll');
+var emailBlacklist = nodecg.Replicant('emailBlacklist');
+emailBlacklist.on('change', function(oldVal, newVal) {
+    addressBl.tagsinput('removeAll');
 
-        var len = newVal.length;
-        for (var i = 0; i < len; i++) {
-            addressBl.tagsinput('add', newVal[i]);
-        }
+    var len = newVal.length;
+    for (var i = 0; i < len; i++) {
+        addressBl.tagsinput('add', newVal[i]);
     }
 });
 
@@ -38,35 +34,28 @@ addressBl.tagsinput({
 
 //triggered when modal is about to be shown
 wordModal.on('show.bs.modal', function() {
-    addressBl.val(nodecg.variables.wordBlacklist);
+    addressBl.val(wordBlacklist.value);
     wordBl.tagsinput('focus');
 });
 addressModal.on('show.bs.modal', function() {
-    addressBl.val(nodecg.variables.emailBlacklist);
+    addressBl.val(emailBlacklist.value);
     addressBl.tagsinput('focus');
 });
 
 //triggered when modal is about to be hidden
 wordModal.on('hide.bs.modal', function() {
-    var arr = wordBl.val();
-    if (!arr)
-        arr = [];
-
+    var arr = wordBl.val() || [];
     var len = arr.length;
     for (var i = 0; i < len; i++) {
         arr[i] = arr[i].toLowerCase();
     }
-    nodecg.variables.wordBlacklist = arr;
+    wordBlacklist.value = arr;
 });
 addressModal.on('hide.bs.modal', function() {
-    var arr = addressBl.val();
-    if (!arr)
-        arr = [];
-
+    var arr = addressBl.val() || [];
     var len = arr.length;
     for (var i = 0; i < len; i++) {
         arr[i] = arr[i].toLowerCase();
     }
-
-    nodecg.variables.emailBlacklist = arr;
+    emailBlacklist.value = arr;
 });
