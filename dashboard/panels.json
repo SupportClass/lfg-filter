@@ -3,7 +3,7 @@
     "name": "filter",
     "title": "Filter",
     "width": 2,
-    "file": "panel.jade",
+    "file": "panel.html",
     "faIcon": "fa-filter"
   }
 ]

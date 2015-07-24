@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge; charset=UTF-8">
+    <meta name="viewport" content="width=device-width" initial-scale="1">
+    <title>lfg-wordfilter Panel</title>
+    <script src="/components/webcomponentsjs/webcomponents-lite.min.js"></script>
+    <script src="/components/iframe-resizer/js/iframeResizer.contentWindow.min.js"></script>
+    <link rel="import" href="components/paper-button/paper-button.html">
+    <link rel="import" href="components/paper-tags-input/paper-tags-input.html">
+    <link rel="import" href="components/ncg-dialog/ncg-dialog.html">
+</head>
+<body>
+<p>
+    Profanity filter for subscription and donation notifications.
+    Anything caught by the filter will be shown on the dashboard for you to accept/reject.
+</p>
+<paper-button data-dialog="wordfilter">Manage word filter</paper-button>
+<paper-button data-dialog="emailfilter">Manage email filter</paper-button>
+
+<ncg-dialog id="wordfilter" with-backdrop>
+    <h2>Edit Word Filter</h2>
+    <paper-tags-input label="Tags" placeholder="Please enter the tag"></paper-tags-input>8
+    <div class="buttons">
+        <paper-button >More Info...</paper-button>
+        <paper-button dialog-dismiss>Decline</paper-button>
+        <paper-button dialog-confirm autofocus>Accept</paper-button>
+    </div>
+</ncg-dialog>
+
+<script type="text/javascript">
+
+</script>
+</body>
+</html>

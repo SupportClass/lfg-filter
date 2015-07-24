@@ -1,0 +1,37 @@
+{
+  "name": "lfg-filter",
+  "version": "1.0.0",
+  "description": "This is a [NodeCG](http://github.com/nodecg/nodecg) bundle.",
+  "main": "extension.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "barry-donations": "^2.2.4",
+    "chai": "^3.2.0",
+    "sinon": "^1.15.4"
+  },
+  "devDependencies": {
+    "mocha": "^2.2.5",
+    "webdriverio": "^3.1.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://lange@github.com/SupportClass/lfg-filter.git"
+  },
+  "keywords": [
+    "nodecg",
+    "wordfilter",
+    "blacklist",
+    "filter"
+  ],
+  "author": "Alex Van Camp <email@alexvan.camp>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SupportClass/lfg-filter/issues"
+  },
+  "homepage": "https://github.com/SupportClass/lfg-filter#readme"
+}
