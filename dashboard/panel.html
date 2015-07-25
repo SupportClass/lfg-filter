@@ -5,17 +5,14 @@
     <meta name="viewport" content="width=device-width" initial-scale="1">
     <title>lfg-wordfilter Panel</title>
     <script src="/components/webcomponentsjs/webcomponents-lite.min.js"></script>
+    <link rel="import" href="components/paper-button/paper-button.html">
 </head>
 <body>
 <p>
     Profanity filter for subscription and donation notifications.
     Anything caught by the filter will be shown on the dashboard for you to accept/reject.
 </p>
-<paper-button data-dialog="wordfilter">Manage word filter</paper-button>
-<paper-button data-dialog="emailfilter">Manage email filter</paper-button>
-
-<script type="text/javascript">
-
-</script>
+<paper-button nodecg-dialog="edit-filter">Manage word filter</paper-button>
+<paper-button nodecg-dialog="emailfilter">Manage email filter</paper-button>
 </body>
 </html>

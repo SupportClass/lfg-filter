@@ -12,6 +12,6 @@
     "width": 2,
     "file": "edit.html",
     "faIcon": "fa-filter",
-    "modal": true
+    "dialog": true
   }
 ]
