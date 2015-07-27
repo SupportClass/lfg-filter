@@ -1,6 +1,8 @@
 #lfg-filter
 This is a [NodeCG](http://github.com/nodecg/nodecg) bundle.
 
+[![Build Status](https://travis-ci.org/SupportClass/lfg-filter.svg?branch=modals-wip)](https://travis-ci.org/SupportClass/lfg-filter)
+
 This bundle provides `wordfilter` and `emailfilter` objects that other bundles can use to check if a string contains profanity or if an email address is blacklisted.
 It also has a dashboard panel that allows the end user to add and remove phrases from the blacklists. **By default, the blacklists are empty.**
 
