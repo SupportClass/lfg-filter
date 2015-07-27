@@ -5,7 +5,7 @@ language: node_js
 node_js:
 - '0.12'
 - iojs
-install:
+before_install:
     - npm install -g webdriverio bower
     - bower install
 env:
