@@ -5,5 +5,13 @@
     "width": 2,
     "file": "panel.html",
     "faIcon": "fa-filter"
+  },
+  {
+    "name": "edit-filter",
+    "title": "Edit Filter",
+    "width": 2,
+    "file": "edit.html",
+    "faIcon": "fa-filter",
+    "dialog": true
   }
 ]

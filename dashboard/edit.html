@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="import" href="components/paper-styles/paper-styles.html">
+    <link rel="import" href="components/paper-button/paper-button.html">
+    <link rel="import" href="components/paper-tags-input/paper-tags-input.html">
+
+    <style>
+        body {
+            font-family: 'Roboto', 'Noto', sans-serif;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Edit Word Filter</h2>
+    <paper-tags-input id="tagsInput" label="Words" placeholder="Enter a word to be blacklisted"></paper-tags-input>
+    <div class="buttons">
+        <paper-button dialog-dismiss>Done</paper-button>
+    </div>
+
+    <script>
+        var tagsInput = document.getElementById('tagsInput');
+        nodecg.Replicant('wordBlacklist')
+                .on('change', function(oldVal, newVal) {
+                    tagsInput.tags = newVal;
+                });
+    </script>
+</body>
+</html>
