@@ -1,17 +1,13 @@
 {
   "name": "lfg-filter",
   "version": "1.0.0",
-  "description": "This is a [NodeCG](http://github.com/nodecg/nodecg) bundle.",
+  "description": "A primitive word and email address filter for NodeCG.",
   "main": "extension.js",
   "directories": {
     "test": "test"
   },
-  "dependencies": {
-    "barry-donations": "^2.2.4",
-    "chai": "^3.2.0",
-    "sinon": "^1.15.4"
-  },
   "devDependencies": {
+    "chai": "^3.2.0",
     "chai-as-promised": "^5.1.0",
     "cheerio": "^0.19.0",
     "express": "^4.13.1",
@@ -19,7 +15,7 @@
     "webdriverio": "^3.1.0"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "wdio wdio.conf.js"
   },
   "repository": {
     "type": "git",
