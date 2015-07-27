@@ -29,9 +29,7 @@ exports.config = {
     // platform configurator. A great tool to configure your capabilities.
     // https://docs.saucelabs.com/reference/platforms-configurator
     //
-    capabilities: [{
-        browserName: 'chrome'
-    }],
+    capabilities: [],
     //
     // ===================
     // Test Configurations
@@ -106,7 +104,6 @@ exports.config = {
     before: function() {
         var chai = require('chai');
         var chaiAsPromised = require('chai-as-promised');
-
         chai.use(chaiAsPromised);
         chai.Should();
     },
@@ -123,3 +120,40 @@ exports.config = {
         // do something
     }
 };
+
+if (process.env.TRAVIS_OS_NAME && process.env.TRAVIS_JOB_NUMBER) {
+    console.log('Travis environment detected, running WebDriver.io with Travis capabilities');
+    var desiredCapabilities = {
+        name: 'Travis job ' + process.env.TRAVIS_JOB_NUMBER,
+        build: process.env.TRAVIS_BUILD_NUMBER,
+        tags: [process.env.TRAVIS_BRANCH, process.env.TRAVIS_COMMIT, process.env.TRAVIS_COMMIT_RANGE],
+        browserName: 'chrome',
+        version: 'beta',
+        tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER
+    };
+
+    if (process.env.TRAVIS_PULL_REQUEST !== 'false') {
+        desiredCapabilities.tags.push(process.env.TRAVIS_PULL_REQUEST);
+    }
+
+    if (process.env.TRAVIS_TAG) {
+        desiredCapabilities.tags.push(process.env.TRAVIS_TAG);
+    }
+
+    if (process.env.TRAVIS_OS_NAME === 'linux') {
+        desiredCapabilities.platform = 'Linux';
+    } else if (process.env.TRAVIS_OS_NAME === 'osx') {
+        desiredCapabilities.platform = 'OS X 10.10';
+    }
+
+    exports.config.capabilities.push(desiredCapabilities);
+    exports.config.host = 'ondemand.saucelabs.com';
+    exports.config.port = 80;
+    exports.config.user = process.env.SAUCE_USERNAME;
+    exports.config.key = process.env.SAUCE_ACCESS_KEY;
+} else {
+    console.log('Running WebDriver.io with local capabilities');
+    exports.config.capabilities.push({
+        browserName: 'chrome'
+    });
+}
