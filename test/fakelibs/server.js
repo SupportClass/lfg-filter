@@ -2,8 +2,11 @@
 
 var fs = require('fs');
 var path = require('path');
-var panels = require('./panel_parser')();
+var parseBundle = require('nodecg-bundle-parser');
 var injectScripts = require('./script_injector');
+
+var bundle = parseBundle(path.resolve(__dirname, '../../'));
+var panels = bundle.dashboard.panels;
 
 /* Largely copied from nodecg/lib/dashboard/index.js */
 var app = require('express')();

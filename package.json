@@ -12,6 +12,7 @@
     "cheerio": "^0.19.0",
     "express": "^4.13.1",
     "mocha": "^2.2.5",
+    "nodecg-bundle-parser": "git+https://github.com/nodecg/nodecg-bundle-parser.git",
     "webdriverio": "^3.1.0"
   },
   "scripts": {
