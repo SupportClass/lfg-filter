@@ -9,7 +9,7 @@
   {
     "name": "edit-filter",
     "title": "Edit Filter",
-    "width": 2,
+    "width": 3,
     "file": "edit.html",
     "faIcon": "fa-filter",
     "dialog": true
