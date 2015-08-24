@@ -2,7 +2,6 @@
   "name": "lfg-filter",
   "version": "1.0.0",
   "description": "A primitive word and email address filter for NodeCG.",
-  "main": "extension.js",
   "directories": {
     "test": "test"
   },
@@ -33,5 +32,28 @@
   "bugs": {
     "url": "https://github.com/SupportClass/lfg-filter/issues"
   },
-  "homepage": "https://github.com/SupportClass/lfg-filter#readme"
+  "homepage": "https://github.com/SupportClass/lfg-filter#readme",
+  "nodecg": {
+    "compatabilityRange": "~0.7.0",
+    "extension": {
+      "path": "extension.js"
+    },
+    "dashboardPanels": [
+      {
+        "name": "filter",
+        "title": "Filter",
+        "width": 2,
+        "file": "panel.html",
+        "faIcon": "fa-filter"
+      },
+      {
+        "name": "edit-filter",
+        "title": "Edit Filter",
+        "width": 3,
+        "file": "edit.html",
+        "faIcon": "fa-filter",
+        "dialog": true
+      }
+    ]
+  }
 }
