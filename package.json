@@ -34,7 +34,7 @@
   },
   "homepage": "https://github.com/SupportClass/lfg-filter#readme",
   "nodecg": {
-    "compatabilityRange": "~0.7.0",
+    "compatibleRange": "~0.7.0",
     "extension": {
       "path": "extension.js"
     },
