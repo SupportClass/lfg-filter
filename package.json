@@ -47,11 +47,17 @@
         "faIcon": "fa-filter"
       },
       {
-        "name": "edit-filter",
-        "title": "Edit Filter",
+        "name": "edit-wordfilter",
+        "title": "Edit Word Filter",
         "width": 3,
-        "file": "edit.html",
-        "faIcon": "fa-filter",
+        "file": "dialogs/wordfilter.html",
+        "dialog": true
+      },
+      {
+        "name": "edit-emailfilter",
+        "title": "Edit Email Filter",
+        "width": 3,
+        "file": "dialogs/emailfilter.html",
         "dialog": true
       }
     ]

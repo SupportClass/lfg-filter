@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="import" href="components/paper-button/paper-button.html">
+    <link rel="import" href="components/paper-tags-input/paper-tags-input.html">
+</head>
+<body>
+    <h2>Edit Email Filter</h2>
+    <paper-tags-input id="tagsInput" label="Addresses" placeholder="Enter an address to be blacklisted"></paper-tags-input>
+    <div class="buttons">
+        <paper-button dialog-dismiss>Done</paper-button>
+    </div>
+
+    <script>
+        var tagsInput = document.getElementById('tagsInput');
+        nodecg.Replicant('emailBlacklist')
+                .on('change', function(oldVal, newVal) {
+                    tagsInput.tags = newVal;
+
+                    // I've no idea why, but without this, sometimes new tags show up as blank
+                    tagsInput.tags = tagsInput.tags.slice();
+                });
+    </script>
+</body>
+</html>
