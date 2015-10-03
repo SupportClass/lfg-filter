@@ -58,7 +58,7 @@ describe('edit emailfilter dialog', function() {
         tagTexts.should.deep.equal(['test@email.com', 'foo@bar.edu']);
     });
 
-    it('should add new words to the blacklist', function* () {
+    it('should add new addresses to the blacklist', function* () {
         yield browser.setValue('#tag-input input', 'third@email.org').keys('Enter');
         var tagTexts = yield browser.getText('#tag-value');
         var replicantValue = (yield browser.execute(function() {
