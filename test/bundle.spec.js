@@ -26,9 +26,9 @@ describe('wordfilter', function() {
     });
 });
 
-describe('edit dialog', function() {
+describe('edit wordfilter dialog', function() {
     before(function* () {
-        yield browser.url('http://localhost:9999/edit-filter');
+        yield browser.url('http://localhost:9999/edit-wordfilter');
     });
 
     it('should display all existing words in the blacklist', function* () {
@@ -39,8 +39,33 @@ describe('edit dialog', function() {
     it('should add new words to the blacklist', function* () {
         yield browser.setValue('#tag-input input', 'three').keys('Enter');
         var tagTexts = yield browser.getText('#tag-value');
-        var replicantValue = (yield browser.execute(function() { return window.replicant.value; })).value;
+        var replicantValue = (yield browser.execute(function() {
+            return window._replicants.wordBlacklist.value;
+        })).value;
+
         tagTexts.should.deep.equal(['one', 'two', 'three']);
         replicantValue.should.deep.equal(['one', 'two', 'three']);
+    });
+});
+
+describe('edit emailfilter dialog', function() {
+    before(function* () {
+        yield browser.url('http://localhost:9999/edit-emailfilter');
+    });
+
+    it('should display all existing addresses in the blacklist', function* () {
+        var tagTexts = yield browser.getText('#tag-value');
+        tagTexts.should.deep.equal(['test@email.com', 'foo@bar.edu']);
+    });
+
+    it('should add new words to the blacklist', function* () {
+        yield browser.setValue('#tag-input input', 'third@email.org').keys('Enter');
+        var tagTexts = yield browser.getText('#tag-value');
+        var replicantValue = (yield browser.execute(function() {
+            return window._replicants.emailBlacklist.value;
+        })).value;
+
+        tagTexts.should.deep.equal(['test@email.com', 'foo@bar.edu', 'third@email.org']);
+        replicantValue.should.deep.equal(['test@email.com', 'foo@bar.edu', 'third@email.org']);
     });
 });

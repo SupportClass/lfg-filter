@@ -16,9 +16,6 @@
         nodecg.Replicant('emailBlacklist')
                 .on('change', function(oldVal, newVal) {
                     tagsInput.tags = newVal;
-
-                    // I've no idea why, but without this, sometimes new tags show up as blank
-                    tagsInput.tags = tagsInput.tags.slice();
                 });
     </script>
 </body>
