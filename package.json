@@ -1,0 +1,63 @@
+{
+  "name": "lfg-filter",
+  "version": "2.0.0",
+  "description": "A primitive word and email address filter for NodeCG.",
+  "directories": {
+    "test": "test"
+  },
+  "devDependencies": {
+    "chai": "^3.2.0",
+    "chai-as-promised": "^5.1.0",
+    "cheerio": "^0.19.0",
+    "express": "^4.13.1",
+    "mocha": "^2.2.5",
+    "nodecg-bundle-parser": "~0.1.1",
+    "webdriverio": "^3.1.0"
+  },
+  "scripts": {
+    "test": "wdio wdio.conf.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://lange@github.com/SupportClass/lfg-filter.git"
+  },
+  "keywords": [
+    "nodecg",
+    "wordfilter",
+    "blacklist",
+    "filter"
+  ],
+  "author": "Alex Van Camp <email@alexvan.camp>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SupportClass/lfg-filter/issues"
+  },
+  "homepage": "https://github.com/SupportClass/lfg-filter#readme",
+  "nodecg": {
+    "compatibleRange": "~0.7.0",
+    "dashboardPanels": [
+      {
+        "name": "filter",
+        "title": "Filter",
+        "width": 2,
+        "headerColor": "#564573",
+        "file": "panel.html",
+        "faIcon": "fa-filter"
+      },
+      {
+        "name": "edit-wordfilter",
+        "title": "Edit Word Filter",
+        "width": 3,
+        "file": "dialogs/wordfilter.html",
+        "dialog": true
+      },
+      {
+        "name": "edit-emailfilter",
+        "title": "Edit Email Filter",
+        "width": 3,
+        "file": "dialogs/emailfilter.html",
+        "dialog": true
+      }
+    ]
+  }
+}
