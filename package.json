@@ -49,14 +49,26 @@
         "title": "Edit Word Filter",
         "width": 3,
         "file": "dialogs/wordfilter.html",
-        "dialog": true
+        "dialog": true,
+        "dialogButtons": [
+          {
+            "name": "Done",
+            "type": "dismiss"
+          }
+        ]
       },
       {
         "name": "edit-emailfilter",
         "title": "Edit Email Filter",
         "width": 3,
         "file": "dialogs/emailfilter.html",
-        "dialog": true
+        "dialog": true,
+        "dialogButtons": [
+          {
+            "name": "Done",
+            "type": "dismiss"
+          }
+        ]
       }
     ]
   }
