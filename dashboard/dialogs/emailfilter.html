@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <script src="components/webcomponentsjs/webcomponents-lite.min.js"></script>
-    <link rel="import" href="components/paper-button/paper-button.html">
-    <link rel="import" href="components/paper-tags-input/paper-tags-input.html">
+	<link rel="import" href="components/paper-button/paper-button.html">
+	<link rel="import" href="components/paper-tags-input/paper-tags-input.html">
 </head>
 <body>
-    <paper-tags-input id="tagsInput" label="Addresses" placeholder="Enter an address to be blacklisted"></paper-tags-input>
+	<paper-tags-input id="tagsInput" label="Addresses"
+					  placeholder="Enter an address to be blacklisted"></paper-tags-input>
 
-    <script>
-        var tagsInput = document.getElementById('tagsInput');
-        nodecg.Replicant('emailBlacklist')
-                .on('change', function(oldVal, newVal) {
-                    tagsInput.tags = newVal;
-                });
-    </script>
+	<script>
+		var tagsInput = document.getElementById('tagsInput');
+		nodecg.Replicant('emailBlacklist')
+				.on('change', function (oldVal, newVal) {
+					tagsInput.tags = newVal;
+				});
+	</script>
 </body>
 </html>
