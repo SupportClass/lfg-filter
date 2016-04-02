@@ -1,15 +1,19 @@
 'use strict';
 
 module.exports = function (nodecg) {
-	var wordBlacklist = nodecg.Replicant('wordBlacklist', {defaultValue: []});
+	const wordBlacklist = nodecg.Replicant('wordBlacklist', {defaultValue: []});
 	return function (string) {
-		var match = false;
-		var blacklist = wordBlacklist.value;
-		if (!blacklist || !string) return false;
+		let match = false;
+		const blacklist = wordBlacklist.value;
+		if (!blacklist || !string) {
+			return false;
+		}
 		string = string.toLowerCase();
-		blacklist.some(function (word) {
+		blacklist.some(word => {
 			word = word.toLowerCase();
-			if (string.indexOf(word) >= 0) match = true;
+			if (string.indexOf(word) >= 0) {
+				match = true;
+			}
 			return match;
 		});
 		return match;

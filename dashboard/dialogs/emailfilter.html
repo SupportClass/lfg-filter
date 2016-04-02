@@ -9,11 +9,10 @@
 					  placeholder="Enter an address to be blacklisted"></paper-tags-input>
 
 	<script>
-		var tagsInput = document.getElementById('tagsInput');
-		nodecg.Replicant('emailBlacklist')
-				.on('change', function (oldVal, newVal) {
-					tagsInput.tags = newVal;
-				});
+		const tagsInput = document.getElementById('tagsInput');
+		nodecg.Replicant('emailBlacklist').on('change', (oldVal, newVal) => {
+			tagsInput.tags = newVal;
+		});
 	</script>
 </body>
 </html>

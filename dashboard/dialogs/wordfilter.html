@@ -8,11 +8,10 @@
 	<paper-tags-input id="tagsInput" label="Words" placeholder="Enter a word to be blacklisted"></paper-tags-input>
 
 	<script>
-		var tagsInput = document.getElementById('tagsInput');
-		nodecg.Replicant('wordBlacklist')
-				.on('change', function (oldVal, newVal) {
-					tagsInput.tags = newVal;
-				});
+		const tagsInput = document.getElementById('tagsInput');
+		nodecg.Replicant('wordBlacklist').on('change', (oldVal, newVal) => {
+			tagsInput.tags = newVal;
+		});
 	</script>
 </body>
 </html>
