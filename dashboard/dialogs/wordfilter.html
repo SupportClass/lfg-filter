@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="import" href="components/paper-button/paper-button.html">
-	<link rel="import" href="components/paper-tags-input/paper-tags-input.html">
+	<link rel="import" href="../components/paper-button/paper-button.html">
+	<link rel="import" href="../components/paper-tags-input/paper-tags-input.html">
 </head>
 <body>
 	<paper-tags-input id="tagsInput" label="Words" placeholder="Enter a word to be blacklisted"></paper-tags-input>
 
 	<script>
 		const tagsInput = document.getElementById('tagsInput');
-		nodecg.Replicant('wordBlacklist').on('change', (oldVal, newVal) => {
+		nodecg.Replicant('wordBlacklist').on('change', newVal => {
 			tagsInput.tags = newVal;
 		});
 	</script>

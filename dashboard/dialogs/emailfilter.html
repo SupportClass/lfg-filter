@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="import" href="components/paper-button/paper-button.html">
-	<link rel="import" href="components/paper-tags-input/paper-tags-input.html">
+	<link rel="import" href="../components/paper-button/paper-button.html">
+	<link rel="import" href="../components/paper-tags-input/paper-tags-input.html">
 </head>
 <body>
 	<paper-tags-input id="tagsInput" label="Addresses"
@@ -10,7 +10,7 @@
 
 	<script>
 		const tagsInput = document.getElementById('tagsInput');
-		nodecg.Replicant('emailBlacklist').on('change', (oldVal, newVal) => {
+		nodecg.Replicant('emailBlacklist').on('change', newVal => {
 			tagsInput.tags = newVal;
 		});
 	</script>
