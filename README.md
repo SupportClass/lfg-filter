@@ -1,4 +1,4 @@
-#lfg-filter
+# lfg-filter
 This is a [NodeCG](http://github.com/nodecg/nodecg) bundle.
 
 [![Build Status](https://travis-ci.org/SupportClass/lfg-filter.svg?branch=modals-wip)](https://travis-ci.org/SupportClass/lfg-filter)
